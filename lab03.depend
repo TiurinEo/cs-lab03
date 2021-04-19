@@ -3,14 +3,23 @@
 	<iostream>
 	<vector>
 
-1618823911 source:c:\users\u211-10\desktop\lab3\lab03\main.cpp
+1618824486 source:c:\users\u211-10\desktop\lab3\lab03\main.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
+	"svg.h"
 
 1618823590 c:\users\u211-10\desktop\lab3\lab03\histogram.h
 	<vector>
 
 1618823316 source:c:\users\u211-10\desktop\lab3\lab03\histogram.cpp
 	"histogram.h"
+
+1618824993 c:\users\u211-10\desktop\lab3\lab03\svg.h
+	<vector>
+	<string>
+
+1618824947 source:c:\users\u211-10\desktop\lab3\lab03\svg.cpp
+	"svg.h"
+	<iostream>
 
