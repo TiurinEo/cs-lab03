@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include "histogram.h"
+
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -12,18 +14,7 @@ input_numbers(size_t count) {
     }
     return result;
 }
-void
-find_minmax(vector<double> numbers, double& min, double& max)  {
-    min = numbers[0];max=numbers[0];
-    for (double x:numbers){
-        if(x<min) {
-            min=x;
-        }
-        else if (x>max){
-            max=x;
-        }
-    }
-}
+
 vector<size_t>
 make_histogram(vector<double> numbers,size_t bin_count){
 double min,max;
@@ -68,7 +59,7 @@ void
 svg_text(double left, double baseline, string text) {
     cout << "<text x='" << left << "' y='" <<baseline<< "'>" << text << "</text>";
 }
-void svg_rect(double x, double y, double width, double height,string stroke = "black", string fill = "black"){
+void svg_rect(double x, double y, double width, double height,string stroke = "black", string fill = "red"){
     cout << "<rect x='" << x << "' y='" <<y<< "' width='"<<width<<"' height='"<<height<<"' stroke='"<<stroke<<"' fill='"<<fill<<"'></rect>";
 }
 void
