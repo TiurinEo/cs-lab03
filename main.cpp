@@ -79,9 +79,16 @@ download(const string& address)
         res = curl_easy_perform(curl);
         ret = curl_easy_perform(curl);
         if(ret == CURLE_HTTP_RETURNED_ERROR) {
-    cerr << "OK\n";
+    cerr << "error\n";
   }
-
+ if(CURLE_OK == res)
+       {
+           res = curl_easy_getinfo(curl, CURLINFO_CONNECT_TIME, &connect);
+           if(CURLE_OK == res)
+           {
+cerr <<"Connect: " << connect;
+          }
+      }
         curl_easy_cleanup(curl);
 
         if(res)
