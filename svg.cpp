@@ -1,8 +1,44 @@
-#include "svg.h"
 #include <iostream>
+#include <vector>
+#include "histogram.h"
+#include "svg.h"
+#include <windows.h>
+#include <sstream>
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
+string make_info_text(){
+
+stringstream buffer;
+DWORD mask = 0x0000ffff;
+    DWORD info=GetVersion();
+    if ((info & 0xa000) == 0) {
+
+
+    DWORD version = info & mask;
+
+    DWORD platform = info >> 16;
+
+    DWORD mask_minor=0x00ff;
+    DWORD version_minor=version & mask_minor;
+    DWORD version_major=version >>8;
+
+
+    buffer<<"Version "<<version_minor<<"."<<version_major<<" (build "<<platform<<")\n";
+
+    char buff[MAX_COMPUTERNAME_LENGTH+1];
+	DWORD size;
+	size=sizeof(buff);
+	GetComputerName(buff,&size);
+    buffer<<buff;
+
+    }
+    else cout<<"net"<<endl;
+    return buffer.str();
+}
+
+
+
 void
 svg_begin(double width, double height) {
     cout << "<?xml version='1.0' encoding='UTF-8'?>\n";
@@ -66,6 +102,6 @@ show_histogram_svg(const vector<size_t>& bins){
         }
     }
 
-
+svg_text(TEXT_LEFT,top+BIN_HEIGHT,make_info_text());
     svg_end();
 }

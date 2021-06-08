@@ -59,35 +59,7 @@ cout<<"*";
 
 
 }
-string make_info_text(){
 
-stringstream buffer;
-DWORD mask = 0x0000ffff;
-    DWORD info=GetVersion();
-    if ((info & 0xa000) == 0) {
-
-
-    DWORD version = info & mask;
-
-    DWORD platform = info >> 16;
-
-    DWORD mask_minor=0x00ff;
-    DWORD version_minor=version & mask_minor;
-    DWORD version_major=version >>8;
-
-
-    buffer<<"Version "<<version_minor<<"."<<version_major<<" (build "<<platform<<")"<<endl;
-
-    char buff[MAX_COMPUTERNAME_LENGTH+1];
-	DWORD size;
-	size=sizeof(buff);
-	GetComputerName(buff,&size);
-    buffer<<buff;
-
-    }
-    else cout<<"net"<<endl;
-    return buffer.str();
-}
 
 int main()
 {
