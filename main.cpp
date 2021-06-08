@@ -3,6 +3,7 @@
 #include "histogram.h"
 #include "svg.h"
 #include <windows.h>
+#include <sstream>
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -58,11 +59,10 @@ cout<<"*";
 
 
 }
+string make_info_text(){
 
-
-int main()
-{
-    DWORD mask = 0x0000ffff;
+stringstream buffer;
+DWORD mask = 0x0000ffff;
     DWORD info=GetVersion();
     if ((info & 0xa000) == 0) {
 
@@ -74,18 +74,25 @@ int main()
     DWORD mask_minor=0x00ff;
     DWORD version_minor=version & mask_minor;
     DWORD version_major=version >>8;
-    cout<<version_minor<<endl;
-    cout<<version_major<<endl;
 
-    cout<<platform<<endl;
 
-    cout<<version<<endl;
-    cout<<"versia "<<version_minor<<"."<<version_major<<endl;
+    buffer<<"Version "<<version_minor<<"."<<version_major<<" (build "<<platform<<")"<<endl;
+
+    char buff[MAX_COMPUTERNAME_LENGTH+1];
+	DWORD size;
+	size=sizeof(buff);
+	GetComputerName(buff,&size);
+    buffer<<buff;
+
     }
     else cout<<"net"<<endl;
-    printf("n = %08x\n", GetVersion()); // 01234567
-    cout<<GetVersion();
-    return 0;
+    return buffer.str();
+}
+
+int main()
+{
+
+
     size_t number_count, bin_count;
     cerr<<"Enter number count:";
     cin>>number_count;

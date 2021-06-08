@@ -1,6 +1,8 @@
 #include "svg.h"
 #include <iostream>
 using namespace std;
+const size_t SCREEN_WIDTH = 80;
+const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
 void
 svg_begin(double width, double height) {
     cout << "<?xml version='1.0' encoding='UTF-8'?>\n";
@@ -26,22 +28,44 @@ void svg_rect(double x, double y, double width, double height,string stroke = "b
 
 void
 show_histogram_svg(const vector<size_t>& bins){
-const auto IMAGE_WIDTH = 400;
-const auto IMAGE_HEIGHT = 300;
-const auto TEXT_LEFT = 20;
-const auto TEXT_BASELINE = 20;
-const auto TEXT_WIDTH = 50;
-const auto BIN_HEIGHT = 30;
-const auto BLOCK_WIDTH = 10;
-const auto color="green";
-const auto fill="#ffeeee";
+    const auto IMAGE_WIDTH = 400;
+    const auto IMAGE_HEIGHT = 300;
+    const auto TEXT_LEFT = 20;
+    const auto TEXT_BASELINE = 20;
+    const auto TEXT_WIDTH = 50;
+    const auto BIN_HEIGHT = 30;
+    const auto BLOCK_WIDTH = 10;
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
+    svg_text(TEXT_LEFT, TEXT_BASELINE, to_string(bins[0]));
     double top = 0;
-for (size_t bin : bins) {
-    const double bin_width = BLOCK_WIDTH * bin;
-    svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-    svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT);
-    top += BIN_HEIGHT;
-}
+    size_t max_count = bins[0]; //поиск max из корзин
+    for (size_t bin : bins)
+        if (bin > max_count)
+            max_count = bin;
+
+    for (size_t bin : bins) {
+        const double bin_width = BLOCK_WIDTH * bin;
+        svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
+        top += BIN_HEIGHT;
+    }
+
+    top=0;
+    if (max_count > MAX_ASTERISK ){
+        for(size_t bin : bins){
+            const double bin_width = static_cast <double> (IMAGE_WIDTH - TEXT_LEFT)/max_count * bin;
+            svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT);
+            top+=BIN_HEIGHT;
+        }
+    }
+    else{
+        for(size_t bin : bins){
+            const double bin_width = BLOCK_WIDTH * bin;
+            svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT);
+            top+=BIN_HEIGHT;
+
+        }
+    }
+
+
     svg_end();
 }
