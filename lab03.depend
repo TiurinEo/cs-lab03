@@ -37,3 +37,10 @@
 1623096105 d:\codeblocks\cslab03\cs-lab03\histogram.h
 	<vector>
 
+1623154576 source:d:\codeblocks\cslab03\cs-lab03\main.cpp
+	<iostream>
+	<vector>
+	"histogram.h"
+	"svg.h"
+	<windows.h>
+

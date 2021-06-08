@@ -2,6 +2,7 @@
 #include <vector>
 #include "histogram.h"
 #include "svg.h"
+#include <windows.h>
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -61,11 +62,30 @@ cout<<"*";
 
 int main()
 {
-    const char* name = "Commander Shepard";
-int year = 2154;
-printf("%s was born in %d.\n", name, year);
-// Commander Shepard was born in 2154.
-return 0;
+    DWORD mask = 0x0000ffff;
+    DWORD info=GetVersion();
+    if ((info & 0xa000) == 0) {
+
+
+    DWORD version = info & mask;
+
+    DWORD platform = info >> 16;
+
+    DWORD mask_minor=0x00ff;
+    DWORD version_minor=version & mask_minor;
+    DWORD version_major=version >>8;
+    cout<<version_minor<<endl;
+    cout<<version_major<<endl;
+
+    cout<<platform<<endl;
+
+    cout<<version<<endl;
+    cout<<"versia "<<version_minor<<"."<<version_major<<endl;
+    }
+    else cout<<"net"<<endl;
+    printf("n = %08x\n", GetVersion()); // 01234567
+    cout<<GetVersion();
+    return 0;
     size_t number_count, bin_count;
     cerr<<"Enter number count:";
     cin>>number_count;
