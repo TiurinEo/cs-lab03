@@ -3,8 +3,10 @@
 #include "histogram.h"
 #include "svg.h"
 #include <curl/curl.h>
-#include <sstream>
 #include <string>
+#include <windows.h>
+#include <sstream>
+
 using namespace std;
 const size_t SCREEN_WIDTH = 80;
 const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
@@ -145,6 +147,7 @@ cout<<"*";
 
 
 }
+
 
 
 int main(int argc, char* argv[]) {

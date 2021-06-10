@@ -23,6 +23,7 @@
 	"svg.h"
 	<iostream>
 
+<<<<<<< HEAD
 1623051548 source:c:\users\u211-10\desktop\cs-lab03-master\cs-lab03\histogram.cpp
 	"histogram.h"
 
@@ -87,11 +88,23 @@
 1623052005 c:\users\u211-10\desktop\cs-lab03-master\cs-lab03\curl\include\curl\typecheck-gcc.h
 
 1623096105 source:d:\codeblocks\cslab03\cs-lab03\histogram.cpp
+=======
+1623096105 source:d:\codeblocks\cslab03\cs-lab03\svg.cpp
+	"svg.h"
+	<iostream>
+
+1623156797 d:\codeblocks\cslab03\cs-lab03\svg.h
+	<vector>
+	<string>
+
+1623096582 source:d:\codeblocks\cslab03\cs-lab03\histogram.cpp
+>>>>>>> lab04-2
 	"histogram.h"
 
 1623096105 d:\codeblocks\cslab03\cs-lab03\histogram.h
 	<vector>
 
+<<<<<<< HEAD
 1623096105 source:d:\codeblocks\cslab03\cs-lab03\svg.cpp
 	"svg.h"
 	<iostream>
@@ -99,4 +112,13 @@
 1623096105 d:\codeblocks\cslab03\cs-lab03\svg.h
 	<vector>
 	<string>
+=======
+1623156797 source:d:\codeblocks\cslab03\cs-lab03\main.cpp
+	<iostream>
+	<vector>
+	"histogram.h"
+	"svg.h"
+	<windows.h>
+	<sstream>
+>>>>>>> lab04-2
 

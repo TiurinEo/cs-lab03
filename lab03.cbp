@@ -14,9 +14,12 @@
 				<Compiler>
 					<Add option="-std=c++17" />
 					<Add option="-g" />
+					<Add directory="D:/codeblocks/cslab03/cs-lab03/curl/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-static" />
+					<Add library="libcurl.dll.a" />
+					<Add directory="D:/codeblocks/cslab03/cs-lab03/curl/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -36,7 +39,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="histogram.cpp" />
+		<Unit filename="histogram.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="svg.cpp" />
+		<Unit filename="svg.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
