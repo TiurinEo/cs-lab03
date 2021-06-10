@@ -24,7 +24,7 @@ DWORD mask = 0x0000ffff;
     DWORD version_major=version >>8;
 
 
-    buffer<<"Version "<<version_minor<<"."<<version_major<<" (build "<<platform<<")\n";
+    buffer<<"Version "<<version_minor<<"."<<version_major<<" (build "<<platform<<")";
 
     char buff[MAX_COMPUTERNAME_LENGTH+1];
 	DWORD size;
